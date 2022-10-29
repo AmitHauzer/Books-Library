@@ -6,8 +6,6 @@ from werkzeug.security import check_password_hash
 from App.Data.data import add_user_to_data, connect_to_db, get_user
 
 
-
-
 login_bp = Blueprint('login', __name__, url_prefix='/login')
 
 
@@ -19,7 +17,6 @@ def register():
         eml = request.form['email']
         pet_name = request.form['pet_name']
         password = request.form['password']
-
         error = None
 
         if not username:
@@ -40,7 +37,6 @@ def register():
                 return redirect(url_for("login.login"))
 
         flash(error, category='error')
-    
     return render_template('register_form.html')
 
 
@@ -71,7 +67,6 @@ def login():
                 return redirect(url_for('home.home'))
 
         flash(error, category='error')
-        
     return render_template('login_form.html')
 
 
@@ -89,13 +84,23 @@ def login_required(view):
         if g.user is None:
             flash(f"Login is required", category='error')
             return redirect(url_for('login.login'))
-
         return view(**kwargs)
-
     return wrapped_view
     
+
     
+def admin_login_required(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        permission = 'admin'
+        if g.user['permissions'] != permission:
+            flash(f"ADMIN Login is required.", category='error')
+            return redirect(url_for('login.login'))
+        return view(**kwargs)
+    return wrapped_view
     
+
+
 @login_bp.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')

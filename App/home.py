@@ -1,5 +1,5 @@
 from flask import render_template, request, Blueprint
-from App.Data.data import get_all_books_from_db, get_a_book_from_db, search_by_book_name, user_loans
+from App.Data.data import get_all_the_objects_from_db, get_a_book_from_db, search_by_book_name, user_loans
 from App.loans import check_the_user_loans
 from App.login import login_required
 
@@ -9,7 +9,7 @@ home_bp = Blueprint('home', __name__, url_prefix='/home')
 
 @home_bp.route("/")
 def home():
-    books = get_all_books_from_db()
+    books = get_all_the_objects_from_db()
     loans_of_books = check_the_user_loans()
     return render_template('home.html', data= books, loans= loans_of_books)
 

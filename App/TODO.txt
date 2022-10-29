@@ -1,9 +1,11 @@
 TODO list:
     admin:
-        all users
-        can change permissions
+        all users                                               - DONE
         if you delete a book return the loans for all users     - DONE
         back to the amin/home/                                  - DONE
+        can change permissions
+        can delete user
+        if you delete a user, return all the loans
 
     forgot password:
         create a page

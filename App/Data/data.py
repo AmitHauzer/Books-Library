@@ -13,19 +13,17 @@ def connect_to_db():
     return con,cur
 
 
-
-# Books
-def get_all_books_from_db():
+def get_all_the_objects_from_db(table='Books'):
     # Connect
     con ,cur = connect_to_db()
     # get all the books
-    result = cur.execute('SELECT * from Books').fetchall()    
+    result = cur.execute(f'SELECT * from {table}').fetchall()    
     # close
     con.close()
     return result
 
 
-
+# Books
 def get_a_book_from_db(id_pk):
     # Connect
     con ,cur = connect_to_db()

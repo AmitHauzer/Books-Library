@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block main %}
+<main class="bg-light">
+    <section class="py-1 text-center container" style="margin: max;">
+        <div class="row py-lg-3">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-semibold">Users</h1>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">email</th>
+                            <th scope="col">Pet name</th>
+                            <th scope="col">Permissions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users%}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{user.username}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.pet_name}}</td>
+                            <td>{{user.permissions}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+</main>
+{% endblock %}

@@ -5,10 +5,10 @@
         <div class="row py-lg-3">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-light" style="font:bolder">Admin</h1>
-                <p class="lead text-muted">blabla</p>
+                <!-- <p class="lead text-muted">blabla</p> -->
                 <div>
                     <a href="{{ url_for('admin.add_book')}}" class="btn btn-primary my-2">Add a book</a>
-                    <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+                    <a href="{{ url_for('admin.all_users') }}" class="btn btn-secondary my-2">Users</a>
                 </div>
             </div>
         </div>
