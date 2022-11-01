@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block main %}
+
+<main>
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3">
+        <div style="margin: auto;" class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="0" xmlns="http://www.w3.org/2000/svg"
+              role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+            </svg>
+
+            <h3 style="text-align:center;">Settings</h3>
+              <table>
+                <tbody>
+                  <tr>
+                    <th>User name: </th>
+                    <td>{{user.username}}</td>
+                  </tr>
+                  <tr>
+                    <th>Email: </th>
+                    <td>{{user.email}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <br><br>
+
+              <form class="form-control form-control-lg" action="{{url_for('settings.change_pass')}}" method="post">
+                
+              <label for="current_pass">Current Password:</label><br>
+              {% if error.current_pass is not none %}
+              <span class="text-danger">{{error.current_pass}}</span><br>
+              {% endif %}
+              <input type="password" id="current_pass" name="current_pass" required><br><br>
+
+              <label for="new_pass">New Password:</label><br>
+              {% if error.new_pass is not none %}
+              <span class="text-danger">{{error.new_pass}}</span><br>
+              {% endif %}
+              <input type="password" id="new_pass" name="new_pass" required><br>
+
+              <label for="confirm_pass">Confirm Password:</label><br>
+              <input type="password" id="confirm_pass" name="confirm_pass" required><br><br>
+
+              <input type="submit" value="Save">
+
+            </form>
+            <div class="card-body">
+
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="text-muted py-5">
+    <div class="container">
+      <p class="float-end mb-1">
+        <a href="/"><button type="button" class="btn btn-sm btn-outline-secondary">Back</button></a>
+
+      </p>
+    </div>
+  </footer>
+</main>
+{% endblock %}
