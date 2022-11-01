@@ -3,6 +3,7 @@ TODO list:
         all users                                               - DONE
         if you delete a book return the loans for all users     - DONE
         back to the amin/home/                                  - DONE
+        add search of users
         can change permissions
         can delete user
         if you delete a user, return all the loans
@@ -23,8 +24,8 @@ TODO list:
         add loans books                                         - DONE
 
     user:
-        add settings
-        change password
+        add settings                                            - DONE
+        change password                                         - DONE
 
     files:
         if you delete a book, delete the file also.             - DONE

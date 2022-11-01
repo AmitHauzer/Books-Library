@@ -81,6 +81,7 @@
           <ul  class="list-unstyled" style="text-align: left;">
             {% if g.user %}
                 <li><span class="text-white">Hello {{ g.user['username'] }}! &nbsp;</span></br>
+                <a href="{{ url_for('settings.settings')}}"><button type="button" class="btn btn-sm btn-outline-secondary" style="margin-bottom: 8px;">Settings</button></a><br>
                 <a href="{{ url_for('login.logout')}}"><button type="button" class="btn btn-sm btn-outline-secondary" style="margin-bottom: 8px;">Logout</button></a>
             {% else %}
                 <a href="{{ url_for('login.login') }}"><button type="button" class="btn btn-sm btn-outline-secondary" style="margin-bottom: 8px;">Login</button></a></br>

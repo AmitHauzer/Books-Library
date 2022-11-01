@@ -23,18 +23,17 @@ def get_all_the_objects_from_db(table='Books'):
     return result
 
 
-# Books
-def get_a_book_from_db(id_pk):
+def get_an_object_from_db_with_id(id_pk, table='Books'):
     # Connect
     con ,cur = connect_to_db()
     # get a book 
-    result = cur.execute(f'SELECT * from Books WHERE id={id_pk}').fetchone()
+    result = cur.execute(f'SELECT * from {table} WHERE id={id_pk}').fetchone()
     # close
     con.close()
     return result
 
 
-
+# Books
 def add_book_to_data(book, price, picture):
     # Connect
     con ,cur = connect_to_db()
@@ -90,6 +89,19 @@ def add_user_to_data(username, eml, pet_name, password, permissions= 'customer')
     # add user
     cur.execute(
         f"INSERT INTO Users ('username', 'email', 'pet_name', 'password', 'permissions') VALUES ('{username}', '{eml}', '{pet_name}', '{pass_hash}', '{permissions}')")
+    con.commit()
+    # close
+    con.close()
+
+
+
+def change_user_pass(password, id_pk):
+    # Connect
+    con ,cur = connect_to_db()
+    # hash password
+    pass_hash = generate_password_hash(password)
+    # change pass
+    cur.execute(f"UPDATE Users SET password='{pass_hash}' WHERE id='{id_pk}'")
     con.commit()
     # close
     con.close()

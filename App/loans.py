@@ -1,7 +1,7 @@
 
 from flask import flash, render_template, request, redirect, Blueprint, session, url_for
 from App.login import login_required
-from App.Data.data import get_a_book_from_db, add_loan_in_db, return_loan, user_loans
+from App.Data.data import get_an_object_from_db_with_id, add_loan_in_db, return_loan, user_loans
 from datetime import date, timedelta
 
 loan_bp = Blueprint('loan', __name__, url_prefix='/loan')
@@ -13,7 +13,7 @@ loan_bp = Blueprint('loan', __name__, url_prefix='/loan')
 def loan_a_book():
     # the relevant book
     book_id = request.args.get('id')
-    book = get_a_book_from_db(id_pk = book_id)
+    book = get_an_object_from_db_with_id(id_pk = book_id)
     # loan date
     today = date.today()
     

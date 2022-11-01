@@ -92,8 +92,8 @@ def login_required(view):
 def admin_login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
-        permission = 'admin'
-        if g.user['permissions'] != permission:
+        permissions = 'admin'
+        if g.user['permissions'] != permissions:
             flash(f"ADMIN Login is required.", category='error')
             return redirect(url_for('login.login'))
         return view(**kwargs)

@@ -2,7 +2,7 @@ from datetime import date
 from flask import flash, render_template, request, redirect, Blueprint, g, url_for
 from App.login import admin_login_required, login_required
 from App.upload_file import delete_file, upload_file
-from App.Data.data import add_book_to_data, del_book, get_a_book_from_db, get_all_the_objects_from_db, return_loans_of_deleted_book
+from App.Data.data import add_book_to_data, del_book, get_an_object_from_db_with_id, get_all_the_objects_from_db, return_loans_of_deleted_book
 
 admin_bp = Blueprint('admin', __name__, url_prefix='/admin')
 
@@ -13,7 +13,7 @@ admin_bp = Blueprint('admin', __name__, url_prefix='/admin')
 @admin_login_required
 def home_admin():
     books = get_all_the_objects_from_db()
-    return render_template('home_admin.html', data= books)
+    return render_template('admin/home_admin.html', data= books)
 
 
 
@@ -30,7 +30,7 @@ def add_book():
             print(f"{book},{price},{picture}")
             add_book_to_data(book=book, price=price, picture=picture.filename)
             return redirect('/admin/home')
-        return render_template("add_book_form.html")
+        return render_template("admin/add_book_form.html")
 
 
 
@@ -40,7 +40,7 @@ def add_book():
 @admin_login_required
 def delete_book_from_db():
     id_pk = request.args.get('id')
-    book = get_a_book_from_db(id_pk = id_pk)
+    book = get_an_object_from_db_with_id(id_pk = id_pk)
     # delete the book's file.
     delete_file(book_picture=book['Picture'])
     # returns all the loans of this book.
@@ -56,4 +56,4 @@ def delete_book_from_db():
 @admin_login_required
 def all_users():
     all_users = get_all_the_objects_from_db(table='Users')
-    return render_template('all_users.html', users=all_users)
+    return render_template('admin/all_users.html', users=all_users)
