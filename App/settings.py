@@ -50,17 +50,3 @@ def change_pass():
                 flash(f'{ex}', category="error")
 
     return render_template('settings/change_pass_form.html', user=user, error=error)
-
-
-
-
-
-
-@settings_bp.route('/changepermissions', methods=['GET','POST'])
-@login_required
-@admin_login_required
-def admin_change_permissions():
-
-    # only admin can see this option.
-    
-    return 'permissions'

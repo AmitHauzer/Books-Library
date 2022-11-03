@@ -53,7 +53,6 @@ def check_the_user_loans():
         user_id = session['user_id']
         all_user_loans = user_loans(user_id)
         for loan in all_user_loans:
-            #TODO: add date checking and continue if it passes
             if check_the_loan_date(loan= loan):
                 continue
             books_id.append(loan['book_id'])

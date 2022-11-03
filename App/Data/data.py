@@ -33,6 +33,18 @@ def get_an_object_from_db_with_id(id_pk, table='Books'):
     return result
 
 
+def del_an_object_from_db(id_pk, table="Books"):
+    print("object has been deleted from db - Done.")
+    # Connect
+    con ,cur = connect_to_db()
+    # delete a book
+    cur.execute(f'DELETE from {table} WHERE id="{id_pk}"')
+    con.commit()
+    # close
+    con.close()
+
+
+
 # Books
 def add_book_to_data(book, price, picture):
     # Connect
@@ -57,15 +69,7 @@ def search_by_book_name(book_name):
 
 
 
-def del_book(id_pk):
-    print("book has been deleted from db - Done.")
-    # Connect
-    con ,cur = connect_to_db()
-    # delete a book
-    cur.execute(f'DELETE from Books WHERE id="{id_pk}"')
-    con.commit()
-    # close
-    con.close()
+
 
 
 
@@ -102,6 +106,17 @@ def change_user_pass(password, id_pk):
     pass_hash = generate_password_hash(password)
     # change pass
     cur.execute(f"UPDATE Users SET password='{pass_hash}' WHERE id='{id_pk}'")
+    con.commit()
+    # close
+    con.close()
+
+
+
+def change_user_permission(permission, id_pk):
+    # Connect
+    con ,cur = connect_to_db()
+    # change pass
+    cur.execute(f"UPDATE Users SET permissions='{permission}' WHERE id='{id_pk}'")
     con.commit()
     # close
     con.close()
@@ -147,6 +162,17 @@ def return_loans_of_deleted_book(book_id, return_date, returned=True):
     con ,cur = connect_to_db()
     # return all the loans of this book.
     cur.execute(f"UPDATE Loans SET return_date='{return_date}', returned='{returned}' WHERE book_id='{book_id}' AND returned='False'")
+    con.commit()
+    # close
+    con.close()
+
+
+
+def return_loans_of_deleted_user(user_id, return_date, returned=True):
+    # Connect
+    con ,cur = connect_to_db()
+    # return all the loans of this user.
+    cur.execute(f"UPDATE Loans SET return_date='{return_date}', returned='{returned}' WHERE user_id='{user_id}' AND returned='False'")
     con.commit()
     # close
     con.close()

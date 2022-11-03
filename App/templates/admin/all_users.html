@@ -21,6 +21,9 @@
                             <th scope="col">email</th>
                             <th scope="col">Pet name</th>
                             <th scope="col">Permissions</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -32,9 +35,16 @@
                             <td>{{user.pet_name}}</td>
                             <td>{{user.permissions}}</td>
                             <td>
-                                <form action="{{ url_for('settings.admin_change_permissions')}}" method="post">
+                                <form action="{{ url_for('admin.admin_change_permissions')}}" method="get">
                                     <button name="id" value="{{user['id']}}" class="btn btn-sm btn-outline-secondary"
                                         style="margin-bottom: 8px;">Edit</button>
+                                </form>
+
+                            </td>
+                            <td>
+                                <form action="{{ url_for('admin.delete_user_from_db')}}" method="post">
+                                    <button name="id" value="{{user['id']}}" class="btn btn-danger"
+                                        style="margin-bottom: 8px;">Delete</button>
                                 </form>
                             </td>
                         </tr>
