@@ -13,39 +13,27 @@
             </svg>
 
             <h3 style="text-align:center;">Settings</h3>
-              <table>
-                <tbody>
-                  <tr>
-                    <th>User name: </th>
-                    <td>{{user.username}}</td>
-                  </tr>
-                  <tr>
-                    <th>Email: </th>
-                    <td>{{user.email}}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <br><br>
+            <table>
+              <tbody>
+                <tr>
+                  <th>User name: </th>
+                  <td>{{user.username}}</td>
+                </tr>
+                <tr>
+                  <th>Email: </th>
+                  <td>{{user.email}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <br><br>
 
-              <form class="form-control form-control-lg" action="{{url_for('settings.change_pass')}}" method="post">
-                
-              <label for="current_pass">Current Password:</label><br>
-              {% if error.current_pass is not none %}
-              <span class="text-danger">{{error.current_pass}}</span><br>
-              {% endif %}
-              <input type="password" id="current_pass" name="current_pass" required><br><br>
+            <form class="form-control form-control-lg" action="{{url_for('admin.admin_change_permissions', id=user.id) }}"
+              method="post">
 
-              <label for="new_pass">New Password:</label><br>
-              {% if error.new_pass is not none %}
-              <span class="text-danger">{{error.new_pass}}</span><br>
-              {% endif %}
-              <input type="password" id="new_pass" name="new_pass" required><br>
-
-              <label for="confirm_pass">Confirm Password:</label><br>
-              <input type="password" id="confirm_pass" name="confirm_pass" required><br><br>
-
+              <label for="permission">Admin permission:</label><br>
+              <input type="checkbox" id="permission" name="permission"><br><br>
               <input type="submit" value="Save">
-
+              
             </form>
             <div class="card-body">
 
