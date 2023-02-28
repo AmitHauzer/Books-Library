@@ -3,36 +3,52 @@
 1.  Clone from Git.
 2.  Create a venv.
 3.  Install the requirements file.
-4.  run wsgi.py
+4.  Run wsgi.py
 
 
 ## Functions:
 ### Admin user:
-* all books.
-* view a book.
-* delete books.
-* add books.
-* all users.
-* change users' permissions.
-* delete users.
+* All books.
+* View a book.
+* Delete books.
+* Add books.
+* All users.
+* Change users' permissions.
+* Delete users.
 
 
 ### Customer user:
-* all books.
-* search books.
-* view a book.
-* loans books.
-* show all the active loans.
-* change password.
+* All books.
+* Search books.
+* View a book.
+* Loans books.
+* Show all the active loans.
+* Change password.
 
 
 ### Guest user:
-* all books.
-* search books.
-* register.
+* All books.
+* Search books.
+* Register.
 * Login.
 
 
-### DataBase:
-* sqlite3
-* The database doesn't appear in the gitignore file in the meantime. 
+### DataBase sqlite3:
+* Users:
+  - Username.
+  - Email.
+  - Pet name.
+  - Password.
+  - Permissions.
+  
+* Books:
+  - Book.
+  - Price.
+  - Picture.
+  
+* Loans:
+  - Loan date.
+  - Reture date.
+  - Returned status.
+  - Book ID.
+  - User ID.
