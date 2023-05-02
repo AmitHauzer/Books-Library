@@ -7,9 +7,11 @@ from colorama import Fore
 UPLOAD_FOLDER = r'./App/static/books_images'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 def upload_file():
     if request.method == 'POST':

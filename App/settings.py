@@ -1,7 +1,7 @@
 from datetime import date
-from flask import flash, render_template, request, redirect, Blueprint, g, session, url_for
+from flask import flash, render_template, request, Blueprint, session
 from App.Data.data import change_user_pass, get_an_object_from_db_with_id
-from App.login import admin_login_required, login_required
+from App.login import login_required
 from werkzeug.security import check_password_hash
 
 
@@ -13,10 +13,6 @@ settings_bp = Blueprint('settings', __name__, url_prefix='/settings')
 def settings():
     user = get_an_object_from_db_with_id(table='Users', id_pk=session.get('user_id'))
     return render_template('settings/settings.html', user=user)
-
-
-
-
 
 
 @settings_bp.route('/changepassword', methods=['GET','POST'])

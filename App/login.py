@@ -40,9 +40,6 @@ def register():
     return render_template('register_form.html')
 
 
-
-
-
 @login_bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
@@ -70,12 +67,10 @@ def login():
     return render_template('login_form.html')
 
 
-
 @login_bp.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('home.home'))
-
 
 
 def login_required(view):
@@ -88,7 +83,6 @@ def login_required(view):
     return wrapped_view
     
 
-    
 def admin_login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
@@ -99,7 +93,6 @@ def admin_login_required(view):
         return view(**kwargs)
     return wrapped_view
     
-
 
 @login_bp.before_app_request
 def load_logged_in_user():

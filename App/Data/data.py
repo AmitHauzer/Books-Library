@@ -44,7 +44,6 @@ def del_an_object_from_db(id_pk, table="Books"):
     con.close()
 
 
-
 # Books
 def add_book_to_data(book, price, picture):
     # Connect
@@ -54,7 +53,6 @@ def add_book_to_data(book, price, picture):
     con.commit()
     # close
     con.close()
-
 
 
 def search_by_book_name(book_name):
@@ -68,11 +66,6 @@ def search_by_book_name(book_name):
     return results
 
 
-
-
-
-
-
 # Users
 def get_user(username):
     # Connect
@@ -82,7 +75,6 @@ def get_user(username):
     # close
     con.close()
     return result
-
 
 
 def add_user_to_data(username, eml, pet_name, password, permissions= 'customer'):
@@ -98,7 +90,6 @@ def add_user_to_data(username, eml, pet_name, password, permissions= 'customer')
     con.close()
 
 
-
 def change_user_pass(password, id_pk):
     # Connect
     con ,cur = connect_to_db()
@@ -111,7 +102,6 @@ def change_user_pass(password, id_pk):
     con.close()
 
 
-
 def change_user_permission(permission, id_pk):
     # Connect
     con ,cur = connect_to_db()
@@ -122,7 +112,6 @@ def change_user_permission(permission, id_pk):
     con.close()
 
 
-
 def user_loans(user_id):
     # Connect
     con ,cur = connect_to_db()
@@ -131,7 +120,6 @@ def user_loans(user_id):
     # close
     con.close()
     return loans
-
 
 
 # Loans
@@ -145,7 +133,6 @@ def add_loan_in_db(loan_date, return_date, book_id, user_id, returned=False):
     con.close()
 
 
-
 def return_loan(book_id, user_id, return_date, returned=True):
     # Connect
     con ,cur = connect_to_db()
@@ -156,7 +143,6 @@ def return_loan(book_id, user_id, return_date, returned=True):
     con.close()
 
 
-
 def return_loans_of_deleted_book(book_id, return_date, returned=True):
     # Connect
     con ,cur = connect_to_db()
@@ -165,7 +151,6 @@ def return_loans_of_deleted_book(book_id, return_date, returned=True):
     con.commit()
     # close
     con.close()
-
 
 
 def return_loans_of_deleted_user(user_id, return_date, returned=True):

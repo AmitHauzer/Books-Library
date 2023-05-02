@@ -46,7 +46,6 @@ def return_a_loan():
     return redirect(url_for('home.home'))
 
 
-
 def check_the_user_loans():
     books_id= []
     if session:
@@ -61,7 +60,6 @@ def check_the_user_loans():
         return books_id
 
 
-
 def check_the_loan_date(loan):
     today = date.today()
     return_date = convert_str_to_date(date_str= loan['return_date'])
@@ -71,7 +69,6 @@ def check_the_loan_date(loan):
     else:
         return False
     
-
 
 def convert_str_to_date(date_str):
     converter = date_str.split('-')

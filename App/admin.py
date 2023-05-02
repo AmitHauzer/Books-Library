@@ -16,22 +16,20 @@ def home_admin():
     return render_template('admin/home_admin.html', data= books)
 
 
-
 # add a book
 @admin_bp.route('/addbook', methods=['GET','POST'])
 @login_required
 @admin_login_required
 def add_book():
-        if request.method == 'POST':
-            book = request.form.get('bookname')
-            price = request.form.get('price')
-            picture = request.files.get('picture')
-            upload_file()
-            print(f"{book},{price},{picture}")
-            add_book_to_data(book=book, price=price, picture=picture.filename)
-            return redirect('/admin/home')
-        return render_template("admin/add_book_form.html")
-
+    if request.method == 'POST':
+        book = request.form.get('bookname')
+        price = request.form.get('price')
+        picture = request.files.get('picture')
+        upload_file()
+        print(f"{book},{price},{picture}")
+        add_book_to_data(book=book, price=price, picture=picture.filename)
+        return redirect('/admin/home')
+    return render_template("admin/add_book_form.html")
 
 
 # delete book
@@ -50,7 +48,6 @@ def delete_book_from_db():
     return redirect('/admin/home')
 
 
-
 # delete user
 @admin_bp.route('/delete_a_user', methods=['GET','POST'])
 @login_required
@@ -64,14 +61,12 @@ def delete_user_from_db():
     return redirect(url_for('admin.all_users'))
 
 
-
 @admin_bp.route('/users')
 @login_required
 @admin_login_required
 def all_users():
     all_users = get_all_the_objects_from_db(table='Users')
     return render_template('admin/all_users.html', users=all_users)
-
 
 
 @admin_bp.route('/userpermissions', methods=['GET','POST'])
